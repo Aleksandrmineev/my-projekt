@@ -1,0 +1,46 @@
+body {
+    font-size: 40px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.block,
+.inline {
+    background: #e0d5c5;
+    padding: 50px;
+padding-bottom: 150px;
+    margin: 50px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px #000;
+}
+
+/* ====================================================== */
+
+.block {
+    /* padding: 50px; */
+    /* padding-top: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+    padding-left: 50px; */
+    /* padding: 30px 60px 10px 100px; */
+    /* padding: 30px 60px 10px;
+    padding: 30px 60px; */
+    padding: 30px;
+}
+
+.block-1 {
+    margin: 0 0 50px 0;
+}
+.block-2 {
+    margin-top: 100px;
+}
+
+.inline {
+}
+
+.img {
+    
+}

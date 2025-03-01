@@ -1,0 +1,26 @@
+body {
+    font-size: 40px;
+}
+
+/* ====================================================== */
+
+.block {
+    /* width: 1000px; */
+    /* height: 100px; */
+    background: #e4e4e4;
+
+    max-width: 1000px;
+    min-width: 800px;
+
+    min-height: 100px;
+    max-height: 1000px;
+}
+
+.inline {
+    width: 1000px;
+    height: 100px;
+}
+
+.img {
+    width: 1000px;
+}
