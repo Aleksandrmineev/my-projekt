@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matrix Hero</title>
+
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    
+        <!-- Styles -->
+        <!-- <link rel="stylesheet" href="css/fonts.css">
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/global.css"> -->
+        <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <button id="theme-toggle">
+        🌓
+    </button>
+
+    <div class="container">
+        <!-- Заголовок и подзаголовок -->
+        <div class="hero-content">
+            <h1 id="typed-heading"></h1>
+            <p id="typed-description" style="line-height: 1.8;"></p>
+        </div>
+
+        <!-- Грид: только код + кнопки -->
+        <div class="hero-matrix" id="hero">
+            <div class="hero-matrix__grid" style="grid-column: 1; padding: 2rem; box-sizing: border-box; overflow: hidden;">
+                <div class="typing-code" id="typing-code" style="min-height: 330px;"></div>
+            </div>
+            <div class="hero-matrix__buttons">
+                <a href="#portfolio" class="btn-glow" id="portfolio-btn"
+                    style="display:none; margin-left: 2rem; opacity: 0; transition: opacity 0.8s ease;">Посмотреть
+                    работы</a>
+                <a href="https://t.me/yourusername" class="btn-glow" id="contact-btn"
+                    style="display:none; margin-left: 1rem; opacity: 0; transition: opacity 0.8s ease;">Связаться 💬</a>
+            </div>
+        </div> <!-- закрытие .hero-matrix -->
+
+        <!-- Секция "Обо мне" вне грида -->
+        <section class="fade-section hidden-section">
+            <div class="text-box">
+              <h2>Обо мне</h2>
+              <p>
+                Я — начинающий фронтенд-разработчик, специализирующийся на адаптивных сайтах, интеграции с WordPress и
+                бизнес-ориентированном подходе к созданию интерфейсов.
+              </p>
+            </div>
+          </section>
+          
+    </div>
+
+<script src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Форма заказа печати</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input[type="text"], select {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 10px 15px;
+      background: #1E90FF;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 600px;
+      width: 100%;
+    }
+
+    .stamp-options {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .stamp-option {
+      border: 2px solid transparent;
+      padding: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      text-align: center;
+      width: 120px;
+      transition: 0.2s ease;
+    }
+
+    .stamp-option img {
+      max-width: 100px;
+      margin-bottom: 8px;
+    }
+
+    .stamp-option:hover {
+      border-color: #1E90FF;
+      background-color: #f0f8ff;
+    }
+
+    .close-modal {
+      float: right;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .selected-type {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #1E90FF;
+    }
+
+    .layout-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .layout-option {
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: 0.2s ease;
+      border-radius: 6px;
+    }
+
+    .layout-option img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+
+    .layout-option:hover {
+      border-color: #1E90FF;
+      background-color: #f0f8ff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-group">
+    <label for="contact">Имя и телефон</label>
+    <input type="text" name="contact" id="contact" required placeholder="Например: Иван +7 999 123-45-67">
+  </div>
+
+  <div class="form-group">
+    <label for="service">Выбрать услугу</label>
+    <select name="service" id="service" required>
+      <option value="">-- выберите --</option>
+      <option value="Печать">Печать</option>
+      <option value="Штамп">Штамп</option>
+      <option value="Факсимилье">Факсимилье</option>
+      <option value="Экслибрис">Экслибрис</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <button type="button" id="openModal">Выбрать тип печати</button>
+    <div class="selected-type" id="selectedTypeText"></div>
+  </div>
+
+  <input type="hidden" name="type_of_stamp" id="type_of_stamp">
+
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="close-modal" id="closeModal">&times;</span>
+      <h3>Выберите тип печати</h3>
+      <div class="stamp-options">
+        <div class="stamp-option" data-value="Автоматическая">
+          <img src="/img/Avtomaticheskaya.png" alt="Автоматическая">
+          Автоматическая
+        </div>
+        <div class="stamp-option" data-value="Факсимиле">
+          <img src="/img/Faksimile.png" alt="Факсимиле">
+          Факсимиле
+        </div>
+        <div class="stamp-option" data-value="Экслибрис">
+          <img src="/img/Exlibris.png" alt="Экслибрис">
+          Экслибрис
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <button type="button" id="openLayoutModal">Выбрать макет</button>
+    <div class="selected-type" id="selectedLayoutText"></div>
+  </div>
+  <input type="hidden" name="layout_choice" id="layout_choice">
+  <div class="modal" id="layoutModal">
+    <div class="modal-content">
+      <span class="close-modal" id="closeLayoutModal">&times;</span>
+      <h3>Выберите макет</h3>
+      <div class="layout-grid">
+        <div class="layout-option" data-value="Макет 1"><img src="/img/maket_1.png" alt="Макет 1"></div>
+        <div class="layout-option" data-value="Макет 2"><img src="/img/maket_2.png" alt="Макет 2"></div>
+        <div class="layout-option" data-value="Макет 3"><img src="/img/maket_3.png" alt="Макет 3"></div>
+        <div class="layout-option" data-value="Макет 4"><img src="/img/maket_4.png" alt="Макет 4"></div>
+        <div class="layout-option" data-value="Макет 5"><img src="/img/maket_5.png" alt="Макет 5"></div>
+        <div class="layout-option" data-value="Макет 6"><img src="/img/maket_6.png" alt="Макет 6"></div>
+        <div class="layout-option" data-value="Макет 7"><img src="/img/maket_7.png" alt="Макет 7"></div>
+        <div class="layout-option" data-value="Макет 8"><img src="/img/maket_8.png" alt="Макет 8"></div>
+        <div class="layout-option" data-value="Макет 9"><img src="/img/maket_9.png" alt="Макет 9"></div>
+        <div class="layout-option" data-value="Макет 10"><img src="/img/maket_10.png" alt="Макет 10"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('modal');
+    const openModalBtn = document.getElementById('openModal');
+    const closeModalBtn = document.getElementById('closeModal');
+    const stampOptions = document.querySelectorAll('.stamp-option');
+    const hiddenInput = document.getElementById('type_of_stamp');
+    const selectedText = document.getElementById('selectedTypeText');
+
+    openModalBtn.addEventListener('click', () => {
+      modal.style.display = 'flex';
+    });
+
+    closeModalBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+
+    stampOptions.forEach(option => {
+      option.addEventListener('click', () => {
+        const value = option.dataset.value;
+        hiddenInput.value = value;
+        selectedText.textContent = "Вы выбрали: " + value;
+        modal.style.display = 'none';
+      });
+    });
+
+    const layoutModal = document.getElementById('layoutModal');
+    const openLayoutModalBtn = document.getElementById('openLayoutModal');
+    const closeLayoutModalBtn = document.getElementById('closeLayoutModal');
+    const layoutOptions = document.querySelectorAll('.layout-option');
+    const layoutInput = document.getElementById('layout_choice');
+    const selectedLayoutText = document.getElementById('selectedLayoutText');
+
+    openLayoutModalBtn.addEventListener('click', () => {
+      layoutModal.style.display = 'flex';
+    });
+
+    closeLayoutModalBtn.addEventListener('click', () => {
+      layoutModal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === layoutModal) {
+        layoutModal.style.display = 'none';
+      }
+    });
+
+    layoutOptions.forEach(option => {
+      option.addEventListener('click', () => {
+        const value = option.dataset.value;
+        layoutInput.value = value;
+        selectedLayoutText.textContent = "Выбран макет: " + value;
+        layoutModal.style.display = 'none';
+      });
+    });
+  </script>
+</body>
+</html>

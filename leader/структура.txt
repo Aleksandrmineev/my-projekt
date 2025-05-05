@@ -1,0 +1,51 @@
+В этом видео 2 задачи:
+Показать как работают снипеты.
+Показать, как настроить формы input с самописного сайта на отправку данных в телеграм.
+PS: Работает даже на локальном сервере через LiveServer VSCode
+
+прежде всего создаем телеграм-бота на @botfather.
+Жмем Start и следуем инструкциям.
+В результате получаем ТОКЕН и ссылку, в которую надо вставить токен.
+Вставляем токен в ссылку по инструкции и открываем ссылку в бракзере. Получаем chat_id.
+
+Нам нужен TOKEN и chat_id - они вставляются в main.js
+
+От моего бота
+TOKEN 8042188223:AAGiQLFwnSYK86FX0O3dMUbsj6dPK-1xwLc
+chat_id: 303648524
+
+
+https://api.telegram.org/bot8042188223:AAGiQLFwnSYK86FX0O3dMUbsj6dPK-1xwLc/sendMessage?chat_id=303648524&text=Привет+из+браузера
+
+Где лежат снипеты:
+C:\Users\<ТВОЙ_ПОЛЬЗОВАТЕЛЬ>\AppData\Roaming\Code\User\snippets\
+Мои основные снипеты:
+htmlbase
+jsformtelegram
+cssstyle
+cssreset
+cssglobal
+
+
+в main.js заменить на это:
+      const TOKEN = '8042188223:AAGiQLFwnSYK86FX0O3dMUbsj6dPK-1xwLc'; // insert here token from BotFather
+      const CHAT_ID = '303648524'; // your chat_id
+      const URL = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
+  
+const message = '<b>New application</b>,
+		'<b>Name:</b> ' + name + '\\n' +",
+		'<b>Phone:</b> ' + phone + '\\n' +",
+		'<b>Email:</b> ' + email;",
+  `;
+
+      const TOKEN = '8042188223:AAGiQLFwnSYK86FX0O3dMUbsj6dPK-1xwLc'; // insert here token from BotFather
+      const CHAT_ID = '303648524'; // your chat_id
+      const URL = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
+  
+      const message = `
+  <b>New Client</b>\n
+  <b>Name:</b> ${name}
+  <b>Telefon:</b> ${phone}
+  <b>Email:</b> ${email}
+  `;
+  
